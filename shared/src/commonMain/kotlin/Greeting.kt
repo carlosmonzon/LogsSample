@@ -4,7 +4,7 @@ class Greeting {
     private val platform = getPlatform()
 
     fun greet(): String {
-        Napier.d { "Gretings from ${platform.name}" }
+        Napier.i { "Gretings from ${platform.name}" }
         return "Hello, ${platform.name}!"
     }
     

@@ -1,34 +1,62 @@
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
+import androidx.compose.ui.graphics.Color
+import io.github.aakira.napier.Napier
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import logssample.composeapp.generated.resources.Res
-import logssample.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+
+            Button(onClick = {
+                Napier.d { "DEBUG message" }
+            }) {
+                Text("DEBUG")
             }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
+
+            Button(onClick = {
+                Napier.i { "INFO message" }
+            }) {
+                Text("INFO")
+            }
+
+            Button(onClick = {
+                Napier.w { "WARN message" }
+            }) {
+                Text("WARN")
+            }
+
+            Button(
+                onClick = {
+                    Napier.e(throwable = RuntimeException("ERROR throwable")) {
+                        "ERROR message"
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Magenta
+                )
+            ) {
+                Text("ERROR")
+            }
+
+            Button(
+                onClick = {
+                    Napier.wtf(throwable = RuntimeException("WTF throwable")) { "WTF message" }
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Red
+                )
+            ) {
+                Text("WTF")
             }
         }
     }

@@ -23,24 +23,40 @@ kotlin {
             }
         }
     }
-    
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    
+
     jvm()
-    
+
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             api(libs.napier)
+        }
+
+        val commonJvm by creating {
+            dependsOn(commonMain.get())
+        }
+
+        commonJvm.dependencies {
+            api(libs.sentry.java)
+        }
+
+        val jvmMain by getting {
+            dependsOn(commonJvm)
+        }
+
+        val androidMain by getting {
+            dependsOn(commonJvm)
         }
     }
 }

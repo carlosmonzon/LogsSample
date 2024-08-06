@@ -1,5 +1,3 @@
-package com.monzon.logssample.logger
-
 import io.github.aakira.napier.Antilog
 import io.github.aakira.napier.LogLevel
 import io.sentry.*

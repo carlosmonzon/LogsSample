@@ -1,5 +1,3 @@
-package com.monzon.logssample.logger
-
 import io.github.aakira.napier.Napier
 import io.sentry.*
 

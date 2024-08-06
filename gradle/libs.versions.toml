@@ -35,6 +35,7 @@ ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "k
 ktor-server-tests = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
 napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 sentry = { group = "io.sentry", name = "sentry-android", version.ref = "sentry" }
+sentry-java = { group = "io.sentry", name = "sentry", version.ref = "sentry" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

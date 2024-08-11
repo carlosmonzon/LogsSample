@@ -11,6 +11,9 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		E42805412C673988001BA779 /* SentryNapierIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42805402C673988001BA779 /* SentryNapierIntegration.swift */; };
+		E42805442C6739F4001BA779 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = E42805432C6739F4001BA779 /* Sentry */; };
+		E42805462C673C06001BA779 /* SentryAntiLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42805452C673C06001BA779 /* SentryAntiLog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,8 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E42805402C673988001BA779 /* SentryNapierIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryNapierIntegration.swift; sourceTree = "<group>"; };
+		E42805452C673C06001BA779 /* SentryAntiLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryAntiLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42805442C6739F4001BA779 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +76,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				E428053F2C673976001BA779 /* Logger */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -85,6 +92,15 @@
 				AB3632DC29227652001CCB65 /* Config.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		E428053F2C673976001BA779 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				E42805402C673988001BA779 /* SentryNapierIntegration.swift */,
+				E42805452C673C06001BA779 /* SentryAntiLog.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +121,7 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
+				E42805432C6739F4001BA779 /* Sentry */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* LogsSample.app */;
@@ -136,6 +153,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
+				E42805422C6739F4001BA779 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -184,6 +202,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42805412C673988001BA779 /* SentryNapierIntegration.swift in Sources */,
+				E42805462C673C06001BA779 /* SentryAntiLog.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
@@ -388,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E42805422C6739F4001BA779 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.33.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E42805432C6739F4001BA779 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E42805422C6739F4001BA779 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

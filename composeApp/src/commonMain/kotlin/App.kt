@@ -18,26 +18,26 @@ fun App() {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
 
             Button(onClick = {
-                Napier.d { "DEBUG message" }
+                Napier.d(tag = TAG) { "DEBUG message" }
             }) {
                 Text("DEBUG")
             }
 
             Button(onClick = {
-                Napier.i { "INFO message" }
+                Napier.i(tag = TAG) { "INFO message" }
             }) {
                 Text("INFO")
             }
 
             Button(onClick = {
-                Napier.w { "WARN message" }
+                Napier.w(tag = TAG) { "WARN message" }
             }) {
                 Text("WARN")
             }
 
             Button(
                 onClick = {
-                    Napier.e(throwable = RuntimeException("ERROR throwable")) {
+                    Napier.e(tag = TAG, throwable = RuntimeException("ERROR throwable")) {
                         "ERROR message"
                     }
                 },
@@ -50,7 +50,7 @@ fun App() {
 
             Button(
                 onClick = {
-                    Napier.wtf(throwable = RuntimeException("WTF throwable")) { "WTF message" }
+                    Napier.wtf(tag = TAG, throwable = RuntimeException("WTF throwable")) { "WTF message" }
                 },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Red
@@ -61,3 +61,5 @@ fun App() {
         }
     }
 }
+
+internal const val TAG = "App"

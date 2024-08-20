@@ -8,8 +8,10 @@ There is a full articule around this integration in:
 
 https://blog.thesurfcode.com/logs-management-in-kmp
 
-
 **Basic integration**
 
-![Kiku](images/napier.png)
+![napier](images/napier.png)
 
+**Final integration**
+
+![final](images/final.png)

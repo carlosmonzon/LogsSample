@@ -1,6 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
@@ -9,7 +8,7 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
     wasmJs {
         browser {
             val projectDirPath = project.projectDir.path
@@ -37,9 +36,9 @@ kotlin {
 
     jvm()
 
-    sourceSets {
+    applyDefaultHierarchyTemplate()
 
-        val commonMain by getting
+    sourceSets {
 
         commonMain.dependencies {
             // put your Multiplatform dependencies here
@@ -47,31 +46,14 @@ kotlin {
         }
 
         val commonJvm by creating {
-            dependsOn(commonMain)
+            dependsOn(commonMain.get())
         }
 
         commonJvm.dependencies {
             api(libs.sentry.java)
         }
-
-        val jvmMain by getting {
-            dependsOn(commonJvm)
-        }
-
-        val androidMain by getting {
-            dependsOn(commonJvm)
-        }
-
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
-        }
-
+        jvmMain.get().dependsOn(commonJvm)
+        androidMain.get().dependsOn(commonJvm)
     }
 }
 
